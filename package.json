@@ -1,0 +1,23 @@
+{
+  "name": "class-automate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bally Lomibao <ballygoodies@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "colors": "^1.4.0",
+    "express": "^4.18.2",
+    "node": "^21.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.20",
+    "@types/node": "^20.8.9",
+    "typescript": "^5.2.2"
+  }
+}
