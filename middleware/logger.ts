@@ -30,6 +30,15 @@ const logger: Logger = {
   // @type - debug
   debug: (...message: string[]) => console.debug(...message.join(' ').red),
 
+  server: (port: any, isConnected: boolean) => {
+    console.log('SERVER PORT: '.bgYellow, port.yellow)
+    if (isConnected) {
+      console.log('SERVER STATUS: '.bgYellow, 'CONNECTED'.yellow)
+    } else {
+      console.log('SERVER STATUS: '.bgRed, 'NOT CONNECTED'.red)
+    }
+  },
+
   // @preset - database
   db: (db: any, isConnected: boolean) => {
     console.log('DB HOST: '.bgGreen, db.connection.host.yellow)

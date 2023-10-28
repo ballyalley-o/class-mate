@@ -37,9 +37,16 @@ interface Logger {
   debug(...message: string[]): void
 
   /**
+   *
+   * @param port - server port
+   * @param isConnected - send the status of the server connection
+   */
+  server(port: any, isConnected: boolean): void
+
+  /**
    * Preset log type for connection status update in the console
    * @param db - connection call
-   * @param isConnected - send the status of the connection
+   * @param isConnected - send the status of the db connection
    */
   db(db: any, isConnected: boolean): void
 }
