@@ -1,3 +1,5 @@
-import express, { Request, Response } from 'express'
+import App from '@config/server'
 
-const app = express()
+const app = new App()
+
+app.start()
