@@ -5,6 +5,10 @@ const RESPONSE = {
     name: 'Class Automate',
     status: 'Running',
     API: 'class-server',
-    url: GLOBAL.baseUrl + GLOBAL.apiRoot,
+    url: GLOBAL.baseUrl,
+    port: GLOBAL.port,
+    environment: GLOBAL.env,
   },
 }
+
+export default RESPONSE
