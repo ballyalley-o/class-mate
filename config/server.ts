@@ -1,4 +1,8 @@
+import dotenv from 'dotenv'
 import express, { Application, Request, Response } from 'express'
+// @routes
+import mainRoute from '@routes'
+dotenv.config()
 
 class App {
   private app: Application
@@ -9,9 +13,9 @@ class App {
     this.registerRoutes()
   }
 
-  private registerRoutes() {
+  private registerRoutes(): void {
     mainRoute(this.app)
   }
 
-  public start() {}
+  public start(port: number): void {}
 }
