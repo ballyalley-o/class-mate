@@ -25,6 +25,12 @@ interface Logger {
   warn(...message: string[]): void
 
   /**
+   * log message in type array in a table
+   * @param message - message to log : type array/object
+   */
+  tbl(...message: string[]): void
+
+  /**
    * log message in type error
    * @param message - message to log : type error
    */
@@ -41,7 +47,7 @@ interface Logger {
    * @param port - server port
    * @param isConnected - send the status of the server connection
    */
-  server(port: any, isConnected: boolean): void
+  server(port: any, apiRoot: any, isConnected: boolean): void
 
   /**
    * Preset log type for connection status update in the console

@@ -23,6 +23,9 @@ const logger: Logger = {
   // @type - warn
   warn: (...message: string[]) => console.warn(...message.join(' ').yellow),
 
+  // @type - table -for array and obj
+  tbl: (...message: string[]) => console.table(...message),
+
   // @type - error
   error: (...message: string[]) =>
     console.log(new Error(message.join(' ').bgRed)),
@@ -30,8 +33,9 @@ const logger: Logger = {
   // @type - debug
   debug: (...message: string[]) => console.debug(...message.join(' ').red),
 
-  server: (port: any, isConnected: boolean) => {
+  server: (port: any, apiRoot: any, isConnected: boolean) => {
     console.log('SERVER PORT: '.bgYellow, port.yellow)
+    console.log('SERVER API: '.bgYellow, apiRoot.yellow)
     if (isConnected) {
       console.log('SERVER STATUS: '.bgYellow, 'CONNECTED'.yellow)
     } else {
