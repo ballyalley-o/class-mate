@@ -1,4 +1,4 @@
-export { default as RESPONSE } from '@constants/responses'
+export { default as RESPONSE } from '@constants/response'
 export {
   expire,
   oneHr,
