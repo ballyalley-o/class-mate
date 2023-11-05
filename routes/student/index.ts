@@ -9,7 +9,7 @@ import studentExercisesRoute from '@routes/student/student-exercises'
 const router = express.Router()
 
 const linkStudentRoutes = (app: any) => {
-  app.use(studentRoute)
+  app.use(PATH.student, studentRoute)
 }
 
 export default linkStudentRoutes
