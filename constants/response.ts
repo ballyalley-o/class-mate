@@ -4,14 +4,13 @@ import { GLOBAL } from '@config'
 const RESPONSE = {
   server: (req: Request, res: Response) => {
     const response = {
-      name: 'Class Automate',
+      name: 'ClassMate',
       status: 'Running',
-      API: 'class-server',
+      API: 'classmate-server',
       url: GLOBAL.baseUrl,
       port: GLOBAL.port,
       environment: GLOBAL.env,
     }
-
     res.send(response)
   },
 }
