@@ -1,15 +1,42 @@
 {
   "compilerOptions": {
-    "target": "ES2016",
-    "module": "CommonJS",
-    "outDir": "./build",
+    "moduleResolution": "Node",
+    "lib": ["dom", "dom.iterable", "ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "./dist",
     "rootDir": "./",
     "baseUrl": "./",
     "paths": {
       "@*": ["./*"]
     },
+    "noResolve": false,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "incremental": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    // "allowSyntheticDefaultImports": true,
     "strict": true
-  }
+  },
+  "tsc-alias": {
+    "verbose": false,
+    "resolveFullPaths": true,
+    // "replacers": {
+    //   "exampleReplacer": {
+    //     "enabled": true,
+    //     "file": "./exampleReplacer.js"
+    //   },
+    //   "otherReplacer": {
+    //     "enabled": true,
+    //     "file": "./otherReplacer.js"
+    //   }
+    // },
+    "fileExtensions": {
+      "inputGlob": "{js,jsx,mjs}",
+      "outputCheck": ["js", "json", "jsx", "mjs"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["node_modules"]
 }
