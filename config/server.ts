@@ -4,7 +4,7 @@ import express, { Application } from 'express'
 import serverRoute from '@routes/server'
 import mainRoute from '@routes'
 // @middleware
-import cookieParser = require('cookie-parser')
+import cookieParser from 'cookie-parser'
 import { logger } from '@middleware'
 // @globals
 import GLOBAL from '@config/global'
@@ -34,10 +34,12 @@ class App {
 
   public start(): void {
     try {
-      this.app.listen(GLOBAL.port, () => logger.server(GLOBAL.port, true))
+      this.app.listen(GLOBAL.port, () =>
+        logger.server(GLOBAL.port, GLOBAL.apiRoot, true)
+      )
     } catch (error: any) {
       logger.error(error.message)
-      logger.server(GLOBAL.port, false)
+      logger.server(GLOBAL.port, GLOBAL.apiRoot, false)
     }
   }
 }
