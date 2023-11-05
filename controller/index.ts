@@ -1,1 +1,1 @@
-import express, { Request, Response } from 'express'
+export { default as studentController } from '@controller/students'
