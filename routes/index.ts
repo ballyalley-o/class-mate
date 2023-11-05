@@ -1,12 +1,13 @@
 import cohortRouter from '@routes/cohort/cohort'
-import studentRouter from '@routes/cohort/students'
-import PARAM from '@routing/param'
+import studentRouter from '@routes/'
+import PATH from '@routing/redir'
 
 const cohortRoutes = cohortRouter
+const studentRoutes = studentRouter
 
 const mainRoute = (app: any) => {
-  app.use(PARAM.cohort, cohortRoutes)
-  app.use(PARAM.student)
+  app.use(PATH.cohort, cohortRoutes)
+  app.use(PATH.student, studentRoutes)
 }
 
 export default mainRoute
