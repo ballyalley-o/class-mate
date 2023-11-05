@@ -1,13 +1,12 @@
 import express from 'express'
+import { studentController } from '@controller'
 
 const router = express.Router()
 
 /**
  * @path - baseUrl/api/v0.1/student
  */
-router.get('/', (req, res) => {
-  res.send('hello')
-})
+router.get('/', studentController.authStudent)
 router.get('/:id', (req, res) => {})
 router.post('/', (req, res) => {})
 router.put('/:id', (req, res) => {})
