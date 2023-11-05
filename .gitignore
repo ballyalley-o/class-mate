@@ -23,7 +23,7 @@ web_modules/
 .parcel-cache
 .next
 .nuxt
-dist
+dist/
 .vuepress/
 .temp
 .docusaurus
