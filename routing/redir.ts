@@ -11,8 +11,8 @@ const redir: Params = (...params) => {
 
 const PATH = {
   root: redir(GLOBAL.apiRoot, PARAM.home),
-  cohort: redir(GLOBAL.apiRoot, PARAM.cohort),
-  student: redir(GLOBAL.apiRoot, PARAM.student),
+  cohort: redir(GLOBAL.apiRoot, PARAM.cohort.def),
+  student: redir(GLOBAL.apiRoot, PARAM.student.def),
 }
 
 export default PATH
