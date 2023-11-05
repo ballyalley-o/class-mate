@@ -54,7 +54,7 @@ interface Logger {
    * @param db - connection call
    * @param isConnected - send the status of the db connection
    */
-  db(db: any, isConnected: boolean): void
+  db(host: any, dbName: any, isConnected: boolean): void
 }
 
 export default Logger

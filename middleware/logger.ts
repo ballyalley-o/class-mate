@@ -44,14 +44,22 @@ const logger: Logger = {
   },
 
   // @preset - database
-  db: (db: any, isConnected: boolean) => {
-    console.log('DB HOST: '.bgGreen, db.connection.host.yellow)
-    console.log('DB NAME: '.bgGreen, db.connection.name.yellow)
-    if (isConnected) {
-      console.log('DB STATUS: '.bgGreen, 'CONNECTED'.green)
-    } else {
-      console.log('DB STATUS: '.bgRed, 'NO CONNECTION'.red)
-    }
+  db: (host: any, dbName: any, isConnected: boolean) => {
+    const DB_LOG = [
+      {
+        HOST: host,
+        DATABASE: dbName,
+        STATUS: isConnected ? 'CONNECTED' : 'NO CONNECTION',
+      },
+    ]
+    console.table(DB_LOG)
+    // console.log('DB HOST: '.bgGreen, db.connection.host.yellow)
+    // console.log('DB NAME: '.bgGreen, db.connection.name.yellow)
+    // if (isConnected) {
+    //   console.log('DB STATUS: '.bgGreen, 'CONNECTED'.green)
+    // } else {
+    //   console.log('DB STATUS: '.bgRed, 'NO CONNECTION'.red)
+    // }
   },
 }
 
