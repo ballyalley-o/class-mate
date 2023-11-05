@@ -6,6 +6,8 @@ import mainRoute from '@routes'
 // @middleware
 import cookieParser from 'cookie-parser'
 import { logger } from '@middleware'
+// @db
+import { connectDb } from '@config'
 // @globals
 import GLOBAL from '@config/global'
 dotenv.config()
@@ -30,6 +32,14 @@ class App {
   private registerRoutes(): void {
     serverRoute(this.app)
     mainRoute(this.app)
+  }
+
+  public async connectDb(): Promise<void> {
+    try {
+      await connectDb(true)
+    } catch (error: any) {
+      logger.error(error.message)
+    }
   }
 
   public start(): void {
