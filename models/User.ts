@@ -37,8 +37,13 @@ const UserSchema = new Schema<IUser>(
       type: String,
       default: '',
     },
+    cohort: {
+      type: String,
+      // required: true,
+    },
   },
   {
+    collection: 'User',
     timestamps: true,
   }
 )

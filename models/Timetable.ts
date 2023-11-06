@@ -17,6 +17,7 @@ const TimetableSchema = new Schema<ITimetable>(
     },
   },
   {
+    collection: 'Timetable',
     timestamps: true,
   }
 )

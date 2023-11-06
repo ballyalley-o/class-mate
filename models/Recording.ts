@@ -22,6 +22,7 @@ const RecordingSchema = new Schema<IRecording>(
     },
   },
   {
+    collection: 'Recording',
     timestamps: true,
   }
 )

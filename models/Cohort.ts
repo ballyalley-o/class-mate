@@ -29,6 +29,7 @@ const CohortSchema = new Schema<ICohort>(
     ],
   },
   {
+    collection: 'Cohort',
     timestamps: true,
   }
 )
