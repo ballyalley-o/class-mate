@@ -9,6 +9,7 @@ interface IUser {
   location: string
   username: string
   avatar: string
+  cohort: string
   matchPassword(enteredPassword: string): Promise<boolean>
 }
 
