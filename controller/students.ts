@@ -1,20 +1,24 @@
 import { Student } from '@models'
 import { asyncHandler, logger } from '@middleware'
+import { RESPONSE } from '@constants'
 
 // @desc Student /set token
 // @route GET /api/v0.1/students
 // @access Public
 const authStudent = asyncHandler(async (req, res) => {
-  //   const { email, userName, password } = req.body
+  const { email, userName, password } = req.body
 
-  //   const student = await Student.findOne({ email, userName })
+  const student = await Student.findOne({ email, userName })
   //   const matchPassword = await student?.matchPassword(password)
 
   try {
-    res.send('Hellow')
+    res.status(200).json({
+      message: RESPONSE.success[200],
+    })
   } catch (error: any) {
     logger.error(error.message)
-    res.status(500).json('Error in Login')
+    res.status(401)
+    throw new Error(RESPONSE.error[401])
   }
 })
 
