@@ -1,15 +1,21 @@
 import mongoose, { Schema, model, connect } from 'mongoose'
 import bcrypt from 'bcryptjs'
-import { IStudent } from '@interfaces/models'
+import { IUser } from '@interfaces/models'
 
-const StudentSchema = new Schema<IStudent>(
+const UserSchema = new Schema<IUser>(
   {
-    firstName: {
+    firstname: {
       type: String,
       required: true,
     },
-    lastName: {
+    lastname: {
       type: String,
+    },
+    role: {
+      type: Schema.Types.ObjectId,
+      // required: true,
+      ref: 'Role',
+      // default: 'Student',
     },
     email: {
       type: String,
@@ -19,7 +25,7 @@ const StudentSchema = new Schema<IStudent>(
       type: String,
       required: true,
     },
-    userName: {
+    username: {
       type: String,
       required: true,
     },
@@ -37,7 +43,7 @@ const StudentSchema = new Schema<IStudent>(
   }
 )
 
-StudentSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next()
   }
@@ -46,10 +52,10 @@ StudentSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt)
 })
 
-StudentSchema.methods.matchPassword = async function (enteredPassword: string) {
+UserSchema.methods.matchPassword = async function (enteredPassword: string) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
-const Student = mongoose.model('Student', StudentSchema)
+const User = mongoose.model('User', UserSchema)
 
-export default Student
+export default User
