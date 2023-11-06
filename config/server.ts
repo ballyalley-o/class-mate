@@ -5,7 +5,7 @@ import serverRoute from '@routes/server'
 import mainRoute from '@routes'
 // @middleware
 import cookieParser from 'cookie-parser'
-import { logger, errorHandler } from '@middleware'
+import { logger, errorHandler, notFound } from '@middleware'
 // @db
 import { connectDb } from '@config'
 // @globals
@@ -28,6 +28,7 @@ class App {
     this.app.use(cookieParser())
     this.registerRoutes()
     this.app.use(errorHandler)
+    this.app.use(notFound)
   }
 
   private registerRoutes(): void {
