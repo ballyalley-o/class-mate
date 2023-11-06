@@ -1,5 +1,5 @@
-export { default as Student } from '@models/Student'
-export { default as Trainer } from '@models/Trainer'
+export { default as User } from '@models/User'
+export { default as Role } from '@models/Role'
 export { default as Cohort } from '@models/Cohort'
 export { default as Recording } from '@models/Recording'
 export { default as Timetable } from '@models/Timetable'
