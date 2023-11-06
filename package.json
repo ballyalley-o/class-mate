@@ -9,7 +9,9 @@
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "build:watch": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
     "resolve": "node --experimental-loader tsc-module-loader dist/app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "peer": "node dist/peer.js -i",
+    "destroy": "node dist/peer.js -d"
   },
   "author": "Bally Lomibao <ballygoodies@outlook.com>",
   "license": "MIT",
@@ -20,6 +22,7 @@
     "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "bson-objectid": "^2.0.4",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
