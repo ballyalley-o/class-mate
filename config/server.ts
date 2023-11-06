@@ -5,7 +5,7 @@ import serverRoute from '@routes/server'
 import mainRoute from '@routes'
 // @middleware
 import cookieParser from 'cookie-parser'
-import { logger } from '@middleware'
+import { logger, errorHandler } from '@middleware'
 // @db
 import { connectDb } from '@config'
 // @globals
@@ -27,6 +27,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }))
     this.app.use(cookieParser())
     this.registerRoutes()
+    this.app.use(errorHandler)
   }
 
   private registerRoutes(): void {
