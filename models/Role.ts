@@ -3,8 +3,8 @@ import mongoose, { Schema, model, connect } from 'mongoose'
 interface IRole {
   name: string
   description: string
-  roleType: string
-  admin: boolean
+  // roleType: string
+  isLead: boolean
 }
 
 const RoleSchema = new Schema<IRole>(
@@ -16,9 +16,14 @@ const RoleSchema = new Schema<IRole>(
     description: {
       type: String,
     },
-    roleType: {
-      type: String,
+    // roleType: {
+    //   type: String,
+    //   required: true,
+    // },
+    isLead: {
+      type: Boolean,
       required: true,
+      default: true,
     },
   },
   {
