@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 interface ICohort {
   name: string
   students: Schema.Types.ObjectId
+  trainers: Schema.Types.ObjectId
 }
 
 const CohortSchema = new Schema<ICohort>(
@@ -15,7 +16,14 @@ const CohortSchema = new Schema<ICohort>(
     students: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Student',
+        ref: 'User',
+        required: true,
+      },
+    ],
+    trainers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
       },
     ],
