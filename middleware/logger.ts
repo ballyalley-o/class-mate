@@ -12,7 +12,8 @@ declare module 'colors' {
 
 const logger: Logger = {
   // @type - custom
-  custom: (color: any, ...message: string[]) => console.log(...message[color]),
+  custom: (color: any, ...message: string[]) =>
+    console.log(...message.join('')[color]),
 
   // @type - log :Default
   log: (...message: string[]) => console.log(...message.join(' ').yellow),
