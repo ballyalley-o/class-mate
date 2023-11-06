@@ -1,14 +1,14 @@
-import { Student } from '@models'
+import { User } from '@models'
 import { asyncHandler, logger } from '@middleware'
 import { RESPONSE } from '@constants'
 
 // @desc Student /set token
 // @route GET /api/v0.1/students
 // @access Public
-const authStudent = asyncHandler(async (req, res) => {
-  const { email, userName, password } = req.body
+const getStudents = asyncHandler(async (req, res) => {
+  //   const { email, username, password } = req.body
 
-  const student = await Student.findOne({ email, userName })
+  //   const student = await User.findOne({ email, username })
   //   const matchPassword = await student?.matchPassword(password)
 
   try {
@@ -22,6 +22,5 @@ const authStudent = asyncHandler(async (req, res) => {
   }
 })
 
-const studentController = { authStudent }
-
+const studentController = { getStudents }
 export default studentController
