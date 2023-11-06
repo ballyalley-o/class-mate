@@ -6,7 +6,7 @@ const router = express.Router()
 /**
  * @path - baseUrl/api/v0.1/student
  */
-router.get('/', studentController.authStudent)
+router.get('/', studentController.getStudents)
 router.get('/:id', (req, res) => {})
 router.post('/', (req, res) => {})
 router.put('/:id', (req, res) => {})
