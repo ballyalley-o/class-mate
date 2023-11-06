@@ -3,6 +3,11 @@ import { __dirname } from '@config'
 
 const PARAM = {
   home: '/',
+  auth: {
+    def: '/auth',
+    signIn: '/sign-in',
+    signUp: '/sign-up',
+  },
   // cohort
   cohort: {
     def: '/cohort',

@@ -13,6 +13,7 @@ const PATH = {
   root: redir(GLOBAL.apiRoot, PARAM.home),
   cohort: redir(GLOBAL.apiRoot, PARAM.cohort.def),
   student: redir(GLOBAL.apiRoot, PARAM.student.def),
+  auth: redir(GLOBAL.apiRoot, PARAM.auth.def),
 }
 
 export default PATH
