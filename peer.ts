@@ -19,7 +19,7 @@ const peerData = async () => {
     const createdRoles = await Role.insertMany(roles)
     const createdUsers = await User.insertMany(users)
 
-    logger.info('DATA', 'MIGRATED')
+    logger.custom('bgBrightWhite', ' MIGRATED ')
     process.exit()
   } catch (error: any) {
     logger.error(error.message)

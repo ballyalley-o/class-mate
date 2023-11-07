@@ -22,10 +22,10 @@ const logger: Logger = {
   info: (...message: string[]) => console.log(message.join(' ').bgCyan),
 
   // @type - warn
-  warn: (...message: string[]) => console.warn(message.join(' ').yellow),
+  warn: (...message: string[]) => console.warn(message.join(' ').bgYellow),
 
   // @type - table -for array and obj
-  tbl: (...message: string[]) => console.table(...message),
+  tbl: (...message: any[]) => console.table(message),
 
   // @type - error
   error: (...message: string[]) =>
