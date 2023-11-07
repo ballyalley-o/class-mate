@@ -13,16 +13,16 @@ declare module 'colors' {
 const logger: Logger = {
   // @type - custom
   custom: (color: any, ...message: string[]) =>
-    console.log(...message.join('')[color]),
+    console.log(message.join('')[color]),
 
   // @type - log :Default
-  log: (...message: string[]) => console.log(...message.join(' ').yellow),
+  log: (...message: string[]) => console.log(message.join(' ').yellow),
 
   // @type - info
-  info: (...message: string[]) => console.log(...message.join(' ').bgCyan),
+  info: (...message: string[]) => console.log(message.join(' ').bgCyan),
 
   // @type - warn
-  warn: (...message: string[]) => console.warn(...message.join(' ').yellow),
+  warn: (...message: string[]) => console.warn(message.join(' ').yellow),
 
   // @type - table -for array and obj
   tbl: (...message: string[]) => console.table(...message),
@@ -32,7 +32,7 @@ const logger: Logger = {
     console.log(new Error(message.join(' ').bgRed)),
 
   // @type - debug
-  debug: (...message: string[]) => console.debug(...message.join(' ').red),
+  debug: (...message: string[]) => console.debug(message.join(' ').red),
 
   server: (port: any, apiRoot: any, isConnected: boolean) => {
     console.log('SERVER PORT: '.bgYellow, port.yellow)
@@ -54,13 +54,6 @@ const logger: Logger = {
       },
     ]
     console.table(DB_LOG)
-    // console.log('DB HOST: '.bgGreen, db.connection.host.yellow)
-    // console.log('DB NAME: '.bgGreen, db.connection.name.yellow)
-    // if (isConnected) {
-    //   console.log('DB STATUS: '.bgGreen, 'CONNECTED'.green)
-    // } else {
-    //   console.log('DB STATUS: '.bgRed, 'NO CONNECTION'.red)
-    // }
   },
 }
 
