@@ -19,7 +19,7 @@ const peerData = async () => {
     const createdRoles = await Role.insertMany(roles)
     const createdUsers = await User.insertMany(users)
 
-    logger.custom('bgBrightWhite', ' MIGRATED ')
+    logger.warn(' MIGRATED 🌱 ')
     process.exit()
   } catch (error: any) {
     logger.error(error.message)
@@ -32,7 +32,7 @@ const destroyData = async () => {
     await Role.deleteMany()
     await User.deleteMany()
 
-    logger.custom('bgRed', 'DATA DESTROYED')
+    logger.custom('bgRed', ' DATA DESTROYED 💥 ')
     process.exit(1)
   } catch (error: any) {
     logger.error(error.message)
