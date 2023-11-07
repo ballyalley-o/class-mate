@@ -31,7 +31,7 @@ const getStudents = asyncHandler(async (req, res, next) => {
 })
 
 // @desc Student
-// @route GET /api/v0.1/student
+// @route GET /api/v0.1/student/:id
 // @access Public
 const getStudent = asyncHandler(async (req, res, next) => {
   const student = await User.findById(req.params.id).select('-password')
@@ -49,5 +49,47 @@ const getStudent = asyncHandler(async (req, res, next) => {
   }
 })
 
-const studentController = { getStudents, getStudent }
+// @desc Update Student
+// @route PUT /api/v0.1/student/:id
+// @access Public
+const updateStudent = asyncHandler(async (req, res, next) => {
+  const student = await User.findById(req.params.id)
+
+  if (student) {
+    student.firstname = req.body.firstname || student.firstname
+    student.lastname = req.body.lastname || student.lastname
+    student.username = req.body.username || student.username
+    student.email = req.body.email || student.email
+    student.location = req.body.location || student.location
+    student.role = req.body.role || student.role
+    student.avatar = req.body.avatar || student.avatar
+
+    if (req.body.password) {
+      student.password = req.body.password
+    }
+
+    const updatedStudent = await student.save()
+
+    const updated = {
+      _id: updatedStudent._id,
+      firstname: updatedStudent.firstname,
+      lastname: updatedStudent.lastname,
+      username: updatedStudent.username,
+      email: updatedStudent.email,
+      location: updatedStudent.location,
+      role: updatedStudent.role,
+      avatar: updatedStudent.avatar,
+    }
+
+    res.status(200).json({
+      message: RESPONSE.success.updated(updatedStudent.firstname),
+      updated,
+    })
+  } else {
+    res.status(404)
+    throw new Error(RESPONSE.error[404])
+  }
+})
+
+const studentController = { getStudents, getStudent, updateStudent }
 export default studentController
