@@ -28,7 +28,7 @@ interface Logger {
    * log message in type array in a table
    * @param message - message to log : type array/object
    */
-  tbl(...message: string[]): void
+  tbl(...message: any[]): void
 
   /**
    * log message in type error
