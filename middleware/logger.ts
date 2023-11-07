@@ -7,8 +7,14 @@ declare module 'colors' {
     bgCyan: string
     bgRed: string
     red: string
+    bgYellow: string
+    // errored: any[]
   }
 }
+
+// colors.setTheme({
+//   errored: ['bgWhite', 'bold'],
+// })
 
 const logger: Logger = {
   // @type - custom
@@ -32,7 +38,7 @@ const logger: Logger = {
     console.log(new Error(message.join(' ').bgRed)),
 
   // @type - debug
-  debug: (...message: string[]) => console.debug(message.join(' ').red),
+  debug: (...message: string[]) => console.debug(message.join(' ').bgRed),
 
   server: (port: any, apiRoot: any, isConnected: boolean) => {
     console.log('SERVER PORT: '.bgYellow, port.yellow)
