@@ -16,14 +16,10 @@ const RoleSchema = new Schema<IRole>(
     description: {
       type: String,
     },
-    // roleType: {
-    //   type: String,
-    //   required: true,
-    // },
     isLead: {
       type: Boolean,
       required: true,
-      default: true,
+      default: false,
     },
   },
   {
