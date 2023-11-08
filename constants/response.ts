@@ -16,7 +16,8 @@ const RESPONSE = {
   success: {
     200: 'OK: Successful Request',
     201: (user: any) => `Success: ${user} is Created`,
-    updated: (user: any) => `Successful Request: ${user} is updated`,
+    updated: (user: any) => `Successful Request: ${user} was UPDATED`,
+    deleted: (user: any) => `Successful Request: ${user} was DELETED`,
   },
   error: {
     500: 'Internal Server Error: An unexpected server error occurred.',
