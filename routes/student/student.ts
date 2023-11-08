@@ -10,7 +10,7 @@ router.get('/', studentController.getStudents)
 router.get('/:id', studentController.getStudent)
 router.post('/', (req, res) => {})
 router.put('/:id', studentController.updateStudent)
-router.delete('/:id', (req, res) => {})
+router.delete('/:id', studentController.deleteStudent)
 
 const studentRoute = router
 export default studentRoute
