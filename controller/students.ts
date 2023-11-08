@@ -1,8 +1,6 @@
-import mongoose from 'mongoose'
 import { User, Role } from '@models'
 import { asyncHandler, logger } from '@middleware'
 import { RESPONSE } from '@constants'
-import ObjectID from 'bson-objectid'
 
 const TAG = 'Student'
 
@@ -91,5 +89,33 @@ const updateStudent = asyncHandler(async (req, res, next) => {
   }
 })
 
-const studentController = { getStudents, getStudent, updateStudent }
+// @desc Delete Student
+// @route DELETE /api/v0.1/student/:id
+// @access Public
+const deleteStudent = asyncHandler(async (req, res, next) => {
+  const student = await User.findById(req.params.id)
+  const role = await Role.findOne({ name: TAG })
+
+  if (student) {
+    if (role) {
+      const userRole = await User.find({ role: role._id })
+      if (!userRole) {
+        res.status(400)
+        throw new Error(RESPONSE.error[400](student.firstname))
+      }
+      await student.deleteOne({ _id: student._id })
+      res.status(200).json({
+        message: RESPONSE.success.deleted(student.firstname),
+        student: {},
+      })
+    }
+  }
+})
+
+const studentController = {
+  getStudents,
+  getStudent,
+  updateStudent,
+  deleteStudent,
+}
 export default studentController
