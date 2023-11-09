@@ -81,7 +81,7 @@ const updateStudent = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({
       message: RESPONSE.success.updated(updatedStudent.firstname),
-      updated,
+      updated: req.body,
     })
   } else {
     res.status(404)
