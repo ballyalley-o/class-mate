@@ -46,8 +46,32 @@ const getCohort = asyncHandler(async (req, res, next) => {
 const AddCohort = asyncHandler(async (req, res, next) => {
   let { name, students, trainers } = req.body
 
-  //   const createdCohort = await
+  const cohortExists = await Cohort.findOne({ name })
+
+  if (cohortExists) {
+    res.status(400)
+    throw new Error(RESPONSE.error[400](name))
+  }
+
+  const cohortBody = {
+    name,
+    students,
+    trainers,
+  }
+
+  const cohort = await Cohort.create(cohortBody)
+
+  if (cohort) {
+    res.status(201).json({
+      message: RESPONSE.success[201](name || TAG),
+      id: cohort._id,
+      body: cohortBody,
+    })
+  } else {
+    res.status(400)
+    throw new Error(RESPONSE.error.invalid)
+  }
 })
 
-const cohortController = { getCohorts, getCohort }
+const cohortController = { getCohorts, getCohort, AddCohort }
 export default cohortController
