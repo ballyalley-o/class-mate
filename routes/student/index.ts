@@ -6,8 +6,6 @@ import studentMiniProjectsRoute from '@routes/student/student-mini-projects'
 import studentCapstoneRoute from '@routes/student/student-capstone'
 import studentExercisesRoute from '@routes/student/student-exercises'
 
-const router = express.Router()
-
 const linkStudentRoutes = (app: any) => {
   app.use(PATH.student, studentRoute)
 }
