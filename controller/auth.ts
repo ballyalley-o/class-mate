@@ -5,10 +5,28 @@ import { RESPONSE } from '@constants'
 
 const TAG = 'User'
 
+// @desc All Users /set token
+// @route GET /api/v0.1/auth/users
+// @access Private: Admin
+const getUsers = asyncHandler(async (req, res, next) => {
+  try {
+    const users = await User.find({})
+
+    res.status(200).json({
+      message: RESPONSE.success[200],
+      total: users.length,
+      users,
+    })
+  } catch (error: any) {
+    logger.error(error.message)
+    throw new Error(RESPONSE.error[404])
+  }
+})
+
 // @desc User /set token
 // @route POST /api/v0.1/auth/signIn
 // @access Public
-const signIn = asyncHandler(async (req, res) => {
+const signIn = asyncHandler(async (req, res, next) => {
   const { email, username, password } = req.body
 
   const user = await User.findOne({ email, username })
@@ -28,7 +46,7 @@ const signIn = asyncHandler(async (req, res) => {
 // @desc Sign Up user
 // @route POST /api/v0.1/auth/signUp
 // @access Public
-const signUp = asyncHandler(async (req, res) => {
+const signUp = asyncHandler(async (req, res, next) => {
   const {
     firstname,
     lastname,
@@ -73,5 +91,5 @@ const signUp = asyncHandler(async (req, res) => {
   }
 })
 
-const authController = { signIn, signUp }
+const authController = { signIn, signUp, getUsers }
 export default authController
