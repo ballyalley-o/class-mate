@@ -83,12 +83,12 @@ const updateStudent = asyncHandler(async (req, res, next) => {
 // @access Public
 const deleteStudent = asyncHandler(async (req, res, next) => {
   const student = await User.findById(req.params.id)
-  const studentRole = await Role.findOne({ name: TAG })
+  const role = await Role.findOne({ name: TAG })
 
   if (student) {
-    if (studentRole) {
-      const userRole = await User.find({ role: studentRole._id })
-      if (!userRole) {
+    if (role) {
+      const studentRole = await User.find({ role: role._id })
+      if (!studentRole) {
         res.status(400)
         throw new Error(RESPONSE.error[400](student.firstname))
       }
