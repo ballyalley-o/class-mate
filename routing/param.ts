@@ -19,6 +19,11 @@ const PARAM = {
     def: '/student',
     studentId: `/student/:id`,
   },
+  // trainer
+  trainer: {
+    def: '/trainer',
+    studentId: `/trainer/:id`,
+  },
   // @production
   buildLoc: 'client/dist',
   buildView: path.resolve(__dirname, 'client', 'dist', 'index.html'),
