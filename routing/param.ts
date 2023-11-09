@@ -7,6 +7,7 @@ const PARAM = {
     def: '/auth',
     signIn: '/sign-in',
     signUp: '/sign-up',
+    users: '/users',
   },
   // cohort
   cohort: {
