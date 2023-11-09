@@ -9,10 +9,10 @@ const TAG = 'Student'
 // @access Public
 const getStudents = asyncHandler(async (req, res, next) => {
   try {
-    const role = await Role.findOne({ name: TAG })
-    if (role) {
+    const studentRole = await Role.findOne({ name: TAG })
+    if (studentRole) {
       const students = await User.find({
-        role: role._id,
+        role: studentRole._id,
       })
 
       res.status(200).json({
@@ -35,7 +35,6 @@ const getStudent = asyncHandler(async (req, res, next) => {
   const student = await User.findById(req.params.id).select('-password')
 
   try {
-    const role = await Role.findOne({ name: TAG })
     res.status(200).json({
       message: RESPONSE.success[200],
       student,
@@ -68,19 +67,9 @@ const updateStudent = asyncHandler(async (req, res, next) => {
 
     const updatedStudent = await student.save()
 
-    const updated = {
-      _id: updatedStudent._id,
-      firstname: updatedStudent.firstname,
-      lastname: updatedStudent.lastname,
-      username: updatedStudent.username,
-      email: updatedStudent.email,
-      location: updatedStudent.location,
-      role: updatedStudent.role,
-      avatar: updatedStudent.avatar,
-    }
-
     res.status(200).json({
       message: RESPONSE.success.updated(updatedStudent.firstname),
+      id: updatedStudent._id,
       updated: req.body,
     })
   } else {
@@ -94,11 +83,11 @@ const updateStudent = asyncHandler(async (req, res, next) => {
 // @access Public
 const deleteStudent = asyncHandler(async (req, res, next) => {
   const student = await User.findById(req.params.id)
-  const role = await Role.findOne({ name: TAG })
+  const studentRole = await Role.findOne({ name: TAG })
 
   if (student) {
-    if (role) {
-      const userRole = await User.find({ role: role._id })
+    if (studentRole) {
+      const userRole = await User.find({ role: studentRole._id })
       if (!userRole) {
         res.status(400)
         throw new Error(RESPONSE.error[400](student.firstname))
