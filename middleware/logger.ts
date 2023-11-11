@@ -44,9 +44,9 @@ const logger: Logger = {
     console.log('SERVER PORT: '.bgYellow, port.yellow)
     console.log('SERVER API: '.bgYellow, apiRoot.yellow)
     if (isConnected) {
-      console.log('SERVER STATUS: '.bgYellow, 'CONNECTED'.yellow)
+      console.log('SERVER STATUS: '.bgYellow, 'CONNECTED 🟢'.yellow)
     } else {
-      console.log('SERVER STATUS: '.bgRed, 'NOT CONNECTED'.red)
+      console.log('SERVER STATUS: '.bgRed, 'NOT CONNECTED 🛑'.red)
     }
   },
 
