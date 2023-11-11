@@ -1,11 +1,19 @@
-import mongoose, { Schema, model, connect } from 'mongoose'
-import bcrypt from 'bcryptjs'
+import mongoose, { Schema, model, connect, Types } from 'mongoose'
+import { RESPONSE } from '@constants'
+import { roleValidate } from '@middleware'
 
 interface ICohort {
   name: string
-  students: Schema.Types.ObjectId
-  trainers: Schema.Types.ObjectId
+  students: Schema.Types.ObjectId[]
+  trainers: Schema.Types.ObjectId[]
 }
+
+type UserId = Types.ObjectId
+
+const COHORT = 'Cohort'
+const STUDENT = 'Student'
+const TRAINER = 'Trainer'
+const USER = 'User'
 
 const CohortSchema = new Schema<ICohort>(
   {
@@ -16,23 +24,34 @@ const CohortSchema = new Schema<ICohort>(
     students: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
+        ref: USER,
+        validate: {
+          validator: async function (userId: UserId) {
+            return roleValidate(userId, STUDENT)
+          },
+          message: RESPONSE.error.invalidRole(STUDENT),
+        },
       },
     ],
+
     trainers: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
+        ref: USER,
+        validate: {
+          validator: async function (userId: UserId) {
+            return roleValidate(userId, TRAINER)
+          },
+          message: RESPONSE.error.invalidRole(TRAINER),
+        },
       },
     ],
   },
   {
-    collection: 'Cohort',
+    collection: COHORT,
     timestamps: true,
   }
 )
 
-const Cohort = mongoose.model('Cohort', CohortSchema)
+const Cohort = mongoose.model(COHORT, CohortSchema)
 export default Cohort
