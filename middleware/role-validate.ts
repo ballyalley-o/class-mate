@@ -16,7 +16,7 @@ async function roleValidate(userId: UserId, role: string): Promise<boolean> {
   const user = await mongoose.model(TAG).findById(userId)
   const roleType = await Role.findById(user.role)
 
-  return user && roleType?.name === role
+  return user && roleType?.type === role
 }
 
 export default roleValidate
