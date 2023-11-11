@@ -56,6 +56,17 @@ const addCohort = asyncHandler(async (req, res, next) => {
     throw new Error(RESPONSE.error[400](name))
   }
 
+  // check if the student already is a member of other cohort
+  const studentsCohort: any[] = []
+  for (const student of students) {
+    const studentCohort = await User.find({})
+
+    console.log(studentCohort)
+    // if (!studentCohort.cohort) {
+    //   studentsCohort.push
+    // }
+  }
+
   const newCohort = new Cohort({
     name,
     students: ObjectID(students) || [],
