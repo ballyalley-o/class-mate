@@ -1,3 +1,8 @@
+export { default as IDefault } from '@interfaces/models/Default'
 export { default as IUser } from '@interfaces/models/User'
 export { default as IRecording } from '@interfaces/models/Recording'
 export { default as ITimetable } from '@interfaces/models/Timetable'
+export { default as IRole } from '@interfaces/models/Role'
+export { default as ICohort } from '@interfaces/models/Cohort'
+export { default as IModule } from '@interfaces/models/Module'
+export { default as IExercise } from '@interfaces/models/Exercise'
