@@ -15,6 +15,7 @@ const getTrainers = asyncHandler(async (req, res, next) => {
       const trainers = await User.find({
         role: trainerRole._id,
       })
+      // TODO: get both trainer ids
 
       res.status(200).json({
         message: RESPONSE.success[200],
