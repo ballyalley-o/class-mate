@@ -9,6 +9,11 @@ const PARAM = {
     signUp: '/sign-up',
     users: '/users',
   },
+  //role
+  role: {
+    def: '/role',
+    roleId: `/role/:id`,
+  },
   // cohort
   cohort: {
     def: '/cohort',

@@ -12,11 +12,10 @@ const redir: Params = (...params) => {
 const PATH = {
   root: redir(GLOBAL.apiRoot, PARAM.home),
   auth: redir(GLOBAL.apiRoot, PARAM.auth.def),
+  role: redir(GLOBAL.apiRoot, PARAM.role.def),
   cohort: redir(GLOBAL.apiRoot, PARAM.cohort.def),
   student: redir(GLOBAL.apiRoot, PARAM.student.def),
   trainer: redir(GLOBAL.apiRoot, PARAM.trainer.def),
 }
-
-console.log(PATH.trainer)
 
 export default PATH
