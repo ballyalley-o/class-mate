@@ -9,7 +9,7 @@ interface IUser {
   location: string
   username: string
   avatar: string
-  cohort: string
+  cohort: Schema.Types.ObjectId
   matchPassword(enteredPassword: string): Promise<boolean>
 }
 

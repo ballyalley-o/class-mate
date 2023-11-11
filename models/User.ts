@@ -38,7 +38,7 @@ const UserSchema = new Schema<IUser>(
       default: '',
     },
     cohort: {
-      type: String,
+      type: Schema.Types.ObjectId,
       // required: true,
     },
   },
