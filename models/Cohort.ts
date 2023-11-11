@@ -1,5 +1,4 @@
 import mongoose, { Schema, model, connect, Types } from 'mongoose'
-import { RESPONSE } from '@constants'
 import { roleValidate } from '@middleware'
 
 interface ICohort {
@@ -29,7 +28,7 @@ const CohortSchema = new Schema<ICohort>(
           validator: async function (userId: UserId) {
             return roleValidate(userId, STUDENT)
           },
-          message: RESPONSE.error.invalidRole(STUDENT),
+          message: 'Invalid Role',
         },
       },
     ],
@@ -42,7 +41,7 @@ const CohortSchema = new Schema<ICohort>(
           validator: async function (userId: UserId) {
             return roleValidate(userId, TRAINER)
           },
-          message: RESPONSE.error.invalidRole(TRAINER),
+          message: 'Invalid Role',
         },
       },
     ],
