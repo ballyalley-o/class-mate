@@ -1,15 +1,10 @@
 import mongoose, { Schema, model, connect } from 'mongoose'
-
-interface IRole {
-  name: string
-  description: string
-  // roleType: string
-  isLead: boolean
-}
+import { IRole } from '@interfaces/models'
+import DefaultSchema from '@models/Default'
 
 const RoleSchema = new Schema<IRole>(
   {
-    name: {
+    type: {
       type: String,
       required: true,
     },
@@ -26,6 +21,9 @@ const RoleSchema = new Schema<IRole>(
     collection: 'Role',
   }
 )
+
+RoleSchema.add(DefaultSchema)
+RoleSchema.index({ type: 1 })
 
 const Role = mongoose.model('Role', RoleSchema)
 export default Role

@@ -9,13 +9,10 @@ const TAG = 'Trainer'
 // @access Private
 const getTrainers = asyncHandler(async (req, res, next) => {
   try {
-    const trainerRole = await Role.findOne({ name: TAG })
+    const trainerRole = await Role.find({ type: TAG })
 
     if (trainerRole) {
-      const trainers = await User.find({
-        role: trainerRole._id,
-      })
-      // TODO: get both trainer ids
+      const trainers = await User.find({ role: trainerRole })
 
       res.status(200).json({
         message: RESPONSE.success[200],
@@ -87,7 +84,7 @@ const updateTrainer = asyncHandler(async (req, res, next) => {
 // @access Private
 const deleteTrainer = asyncHandler(async (req, res, next) => {
   const trainer = await User.findById(req.params.id)
-  const trainerRole = await Role.findOne({ name: TAG })
+  const trainerRole = await Role.findOne({ type: TAG })
 
   if (trainer) {
     if (trainerRole) {

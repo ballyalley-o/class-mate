@@ -9,7 +9,7 @@ const TAG = 'Student'
 // @access Public
 const getStudents = asyncHandler(async (req, res, next) => {
   try {
-    const studentRole = await Role.findOne({ name: TAG })
+    const studentRole = await Role.findOne({ type: TAG })
     if (studentRole) {
       const students = await User.find({
         role: studentRole._id,
@@ -83,7 +83,7 @@ const updateStudent = asyncHandler(async (req, res, next) => {
 // @access Public
 const deleteStudent = asyncHandler(async (req, res, next) => {
   const student = await User.findById(req.params.id)
-  const role = await Role.findOne({ name: TAG })
+  const role = await Role.findOne({ type: TAG })
 
   if (student) {
     if (role) {
