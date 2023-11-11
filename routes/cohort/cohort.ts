@@ -8,9 +8,9 @@ const router = express.Router()
  */
 router.get('/', cohortController.getCohorts)
 router.get('/:id', cohortController.getCohort)
-router.post('/', cohortController.AddCohort)
-router.put('/:id', (req, res) => {})
-router.delete('/:id', (req, res) => {})
+router.post('/', cohortController.addCohort)
+router.put('/:id', cohortController.updateCohort)
+router.delete('/:id', cohortController.deleteCohort)
 
 const cohortRoute = router
 export default cohortRoute
