@@ -1,6 +1,7 @@
 import mongoose, { Schema, model, connect } from 'mongoose'
 import bcrypt from 'bcryptjs'
 import { IUser } from '@interfaces/models'
+import DefaultSchema from '@models/Default'
 
 const UserSchema = new Schema<IUser>(
   {
@@ -20,6 +21,11 @@ const UserSchema = new Schema<IUser>(
     email: {
       type: String,
       required: true,
+      unique: true,
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        'Please add a valid email',
+      ],
     },
     password: {
       type: String,
@@ -28,6 +34,7 @@ const UserSchema = new Schema<IUser>(
     username: {
       type: String,
       required: true,
+      unique: true,
     },
     location: {
       type: String,
@@ -43,16 +50,19 @@ const UserSchema = new Schema<IUser>(
     },
   },
   {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     collection: 'User',
     timestamps: true,
   }
 )
 
+UserSchema.add(DefaultSchema)
+
 UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next()
   }
-
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })
@@ -60,6 +70,9 @@ UserSchema.pre('save', async function (next) {
 UserSchema.methods.matchPassword = async function (enteredPassword: string) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
+
+UserSchema.index({ username: 1 })
+UserSchema.index({ firstname: 1 })
 
 const User = mongoose.model('User', UserSchema)
 
