@@ -1,11 +1,7 @@
-import mongoose, { Schema, model, connect, Types } from 'mongoose'
+import mongoose, { Schema, Types } from 'mongoose'
+import { ICohort } from '@interfaces/models'
 import { roleValidate } from '@middleware'
-
-interface ICohort {
-  name: string
-  students: Schema.Types.ObjectId[]
-  trainers: Schema.Types.ObjectId[]
-}
+import DefaultSchema from '@models/Default'
 
 type UserId = Types.ObjectId
 
@@ -45,12 +41,22 @@ const CohortSchema = new Schema<ICohort>(
         },
       },
     ],
+
+    module: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Module',
+      },
+    ],
   },
   {
     collection: COHORT,
     timestamps: true,
   }
 )
+
+CohortSchema.add(DefaultSchema)
+CohortSchema.index({ name: 1 })
 
 const Cohort = mongoose.model(COHORT, CohortSchema)
 export default Cohort
