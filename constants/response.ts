@@ -27,6 +27,8 @@ const RESPONSE = {
     400: (user: any) => `400: ${user} already exists`,
     invalid: 'Bad Request: The request is malformed or invalid',
     notFound: (user: any) => `${user} is not found`,
+    invalidRole: (role: any) =>
+      `Only users enrolled as ${role} can be added to the ${role}s list.`,
   },
 }
 
