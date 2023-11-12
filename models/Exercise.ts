@@ -9,6 +9,7 @@ interface IExercise {
   cohort: Schema.Types.ObjectId
   instructions: string
   gist: string
+  status: string
 }
 
 const ExerciseSchema = new Schema<IExercise>(
@@ -29,12 +30,16 @@ const ExerciseSchema = new Schema<IExercise>(
     },
     cohort: {
       type: Schema.Types.ObjectId,
+      // required: true,
     },
     instructions: {
       type: String,
       required: true,
     },
     gist: {
+      type: String,
+    },
+    status: {
       type: String,
     },
   },
