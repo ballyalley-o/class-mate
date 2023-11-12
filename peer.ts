@@ -4,7 +4,7 @@ import App from '@config/server'
 // @datas
 import { users, roles, cohort } from '@migration'
 // @models
-import { User, Role } from '@models'
+import { User, Role, Cohort } from '@models'
 import { logger } from '@middleware'
 dotenv.config()
 
@@ -15,9 +15,11 @@ const peerData = async () => {
   try {
     await Role.deleteMany()
     await User.deleteMany()
+    await Cohort.deleteMany()
 
     const createdRoles = await Role.insertMany(roles)
     const createdUsers = await User.insertMany(users)
+    const createdCohort = await Cohort.insertMany(cohort)
 
     logger.warn(' DATA MIGRATED 🌱 ')
     process.exit()
@@ -31,6 +33,7 @@ const destroyData = async () => {
   try {
     await Role.deleteMany()
     await User.deleteMany()
+    await Cohort.deleteMany()
 
     logger.custom('bgRed', ' DATA DESTROYED 💥 ')
     process.exit(1)

@@ -13,7 +13,10 @@ const getStudents = asyncHandler(async (req, res, next) => {
     if (studentRole) {
       const students = await User.find({
         role: studentRole._id,
-      }).populate({ path: 'role', select: 'type' })
+      }).populate([
+        { path: 'role', select: 'type' },
+        { path: 'cohort', select: 'name' },
+      ])
 
       res.status(200).json({
         message: RESPONSE.success[200],
@@ -39,6 +42,11 @@ const getStudent = asyncHandler(async (req, res, next) => {
     const student = await User.findById(req.params.id)
       .select('-password')
       .populate({ path: 'role', select: 'type' })
+      .populate({
+        path: 'cohort',
+        select: 'name',
+        match: { cohort: { $exists: true } },
+      })
 
     if (student) {
       res.status(200).json({

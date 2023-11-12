@@ -46,6 +46,7 @@ const UserSchema = new Schema<IUser>(
     },
     cohort: {
       type: Schema.Types.ObjectId,
+      ref: 'Cohort',
       // required: true,
     },
   },
