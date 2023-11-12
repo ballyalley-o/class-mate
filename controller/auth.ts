@@ -2,6 +2,7 @@ import { User } from '@models'
 import { asyncHandler, logger } from '@middleware'
 import { genToken } from '@utils'
 import { RESPONSE } from '@constants'
+import { GLOBAL } from '@config'
 
 const TAG = 'User'
 
@@ -24,7 +25,7 @@ const getUsers = asyncHandler(async (req, res, next) => {
 })
 
 // @desc User /set token
-// @route POST /api/v0.1/auth/signIn
+// @route POST /api/v0.1/auth/sign-in
 // @access Public
 const signIn = asyncHandler(async (req, res, next) => {
   const { email, username, password } = req.body
@@ -35,7 +36,9 @@ const signIn = asyncHandler(async (req, res, next) => {
   if (user && matchPassword) {
     const token = genToken(res, user._id)
     res.status(200).json({
-      message: RESPONSE.success[200],
+      message: RESPONSE.success.signIn(username),
+      success: true,
+      token,
     })
   } else {
     res.status(401)
@@ -43,8 +46,23 @@ const signIn = asyncHandler(async (req, res, next) => {
   }
 })
 
+// @desc Sign Out user
+// @route POST /api/v0.1/auth/sign-out
+// @access Public
+const signOut = asyncHandler(async (req, res, next) => {
+  res.cookie(GLOBAL.cookie, '', {
+    httpOnly: true,
+    expires: new Date(0),
+  })
+  res.status(200).json({
+    message: RESPONSE.success.signOut('User'),
+    success: true,
+    user: {},
+  })
+})
+
 // @desc Sign Up user
-// @route POST /api/v0.1/auth/signUp
+// @route POST /api/v0.1/auth/sign-up
 // @access Public
 const signUp = asyncHandler(async (req, res, next) => {
   const {
@@ -82,6 +100,7 @@ const signUp = asyncHandler(async (req, res, next) => {
     genToken(res, user._id)
     res.status(201).json({
       message: RESPONSE.success[201](username || TAG),
+      success: true,
       id: user._id,
       body: userBody,
     })
@@ -91,5 +110,5 @@ const signUp = asyncHandler(async (req, res, next) => {
   }
 })
 
-const authController = { signIn, signUp, getUsers }
+const authController = { signIn, signOut, signUp, getUsers }
 export default authController
