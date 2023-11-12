@@ -20,11 +20,14 @@ const getStudents = asyncHandler(async (req, res, next) => {
         total: students.length,
         students: students,
       })
+    } else {
+      res.status(404)
+      throw new Error(RESPONSE.error[404])
     }
   } catch (error: any) {
     logger.error(error.message)
-    res.status(401)
-    throw new Error(RESPONSE.error[401])
+    res.status(404)
+    throw new Error(RESPONSE.error[404])
   }
 })
 
@@ -32,13 +35,17 @@ const getStudents = asyncHandler(async (req, res, next) => {
 // @route GET /api/v0.1/student/:id
 // @access Public
 const getStudent = asyncHandler(async (req, res, next) => {
-  const student = await User.findById(req.params.id).select('-password')
-
   try {
-    res.status(200).json({
-      message: RESPONSE.success[200],
-      student,
-    })
+    const student = await User.findById(req.params.id).select('-password')
+    if (student) {
+      res.status(200).json({
+        message: RESPONSE.success[200],
+        student,
+      })
+    } else {
+      res.status(404)
+      throw new Error(RESPONSE.error[404])
+    }
   } catch (error: any) {
     logger.error(error.message)
     res.status(404)
