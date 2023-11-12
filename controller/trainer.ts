@@ -12,10 +12,10 @@ const getTrainers = asyncHandler(async (req, res, next) => {
     const trainerRole = await Role.find({ type: TAG })
 
     if (trainerRole) {
-      const trainers = await User.find({ role: trainerRole }).populate({
-        path: 'role',
-        select: 'type',
-      })
+      const trainers = await User.find({ role: trainerRole }).populate([
+        { path: 'role', select: 'type isLead' },
+        { path: 'cohort', select: 'name' },
+      ])
 
       res.status(200).json({
         message: RESPONSE.success[200],
@@ -39,7 +39,10 @@ const getTrainers = asyncHandler(async (req, res, next) => {
 const getTrainer = asyncHandler(async (req, res, next) => {
   const trainer = await User.findById(req.params.id)
     .select('-password')
-    .populate({ path: 'role', select: 'type' })
+    .populate([
+      { path: 'role', select: 'type isLead' },
+      { path: 'cohort', select: 'name' },
+    ])
 
   try {
     res.status(200).json({
