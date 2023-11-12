@@ -14,6 +14,7 @@ const getCohorts = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({
       message: RESPONSE.success[200],
+      total: cohorts.length,
       cohorts,
     })
   } catch (error) {
@@ -47,7 +48,7 @@ const getCohort = asyncHandler(async (req, res, next) => {
 // @route POST /api/v0.1/cohort
 // @access Private
 const addCohort = asyncHandler(async (req, res, next) => {
-  let { name, students, trainers } = req.body
+  let { name, students, trainers, module } = req.body
 
   const cohortExists = await Cohort.findOne({ name })
 
@@ -55,16 +56,20 @@ const addCohort = asyncHandler(async (req, res, next) => {
     res.status(400)
     throw new Error(RESPONSE.error[400](name))
   }
-
   // check if the student already is a member of other cohort
-  const studentsCohort: any[] = []
-  for (const student of students) {
-    const studentCohort = await User.find({})
+  const studentsWithCohort: any[] = []
+  const studentCohort = await Cohort.findOne({ students })
+  if (students.length > 1) {
+    for (const student of students) {
+      if (studentCohort) {
+        studentsWithCohort.push(student)
+      }
+    }
+  }
 
-    console.log(studentCohort)
-    // if (!studentCohort.cohort) {
-    //   studentsCohort.push
-    // }
+  if (studentsWithCohort.length > 0) {
+    res.status(400)
+    throw new Error(RESPONSE.error.studentWithCohort(studentCohort?.name))
   }
 
   const newCohort = new Cohort({
