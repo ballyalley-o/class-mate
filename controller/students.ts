@@ -13,7 +13,7 @@ const getStudents = asyncHandler(async (req, res, next) => {
     if (studentRole) {
       const students = await User.find({
         role: studentRole._id,
-      })
+      }).populate({ path: 'role', select: 'type' })
 
       res.status(200).json({
         message: RESPONSE.success[200],
@@ -36,7 +36,10 @@ const getStudents = asyncHandler(async (req, res, next) => {
 // @access Public
 const getStudent = asyncHandler(async (req, res, next) => {
   try {
-    const student = await User.findById(req.params.id).select('-password')
+    const student = await User.findById(req.params.id)
+      .select('-password')
+      .populate({ path: 'role', select: 'type' })
+
     if (student) {
       res.status(200).json({
         message: RESPONSE.success[200],
