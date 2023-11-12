@@ -6,6 +6,7 @@ const PARAM = {
   auth: {
     def: '/auth',
     signIn: '/sign-in',
+    signOut: '/sign-out',
     signUp: '/sign-up',
     users: '/users',
   },
