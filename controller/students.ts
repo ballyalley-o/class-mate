@@ -41,12 +41,10 @@ const getStudent = asyncHandler(async (req, res, next) => {
   try {
     const student = await User.findById(req.params.id)
       .select('-password')
-      .populate({ path: 'role', select: 'type' })
-      .populate({
-        path: 'cohort',
-        select: 'name',
-        match: { cohort: { $exists: true } },
-      })
+      .populate([
+        { path: 'role', select: 'type' },
+        { path: 'cohort', select: 'name' },
+      ])
 
     if (student) {
       res.status(200).json({
