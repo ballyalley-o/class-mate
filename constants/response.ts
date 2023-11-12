@@ -29,6 +29,8 @@ const RESPONSE = {
     notFound: (user: any) => `${user} is not found`,
     invalidRole: async (role: any) =>
       `Only users enrolled as ${role} can be added to the ${role}s list.`,
+    studentWithCohort: (cohort: any) =>
+      `The student already belongs to a cohort. ${cohort}`,
   },
 }
 
