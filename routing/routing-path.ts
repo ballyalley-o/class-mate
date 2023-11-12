@@ -16,6 +16,7 @@ const PATH = {
   cohort: redir(GLOBAL.apiRoot, PARAM.cohort.def),
   student: redir(GLOBAL.apiRoot, PARAM.student.def),
   trainer: redir(GLOBAL.apiRoot, PARAM.trainer.def),
+  module: redir(GLOBAL.apiRoot, PARAM.module.def),
 }
 
 export default PATH

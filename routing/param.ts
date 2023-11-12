@@ -27,7 +27,12 @@ const PARAM = {
   // trainer
   trainer: {
     def: '/trainer',
-    studentId: `/trainer/:id`,
+    trainerId: `/trainer/:id`,
+  },
+  // module
+  module: {
+    def: '/module',
+    moduleId: '/module/:id',
   },
   // @production
   buildLoc: 'client/dist',
