@@ -19,6 +19,7 @@ const ModuleSchema = new Schema<IModule>(
     },
     file: {
       type: String,
+      //   required: true
     },
     link: {
       type: String,
