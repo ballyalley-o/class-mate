@@ -6,7 +6,7 @@ class ExtError extends Error {
   kind: string
   errors: any[]
 
-  constructor(message: string, kind: string, errors: any[]) {
+  constructor(message: any, kind: string, errors: any[]) {
     super(message)
     this.kind = kind
     this.errors = errors
@@ -29,6 +29,7 @@ const errorHandler = (
 ) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode
   let message = err.message
+  let errors = err.errors
   const PROD_ENV = 'production'
 
   if (err.name === 'CastError' && err.kind === 'ObjectId') {
@@ -37,13 +38,13 @@ const errorHandler = (
   }
 
   if (err.errors) {
-    const errors = Object.values(err.errors).map((err: any) => err.message)
+    const errorsArr = Object.values(err.errors).map((err: any) => err.message)
     statusCode = 400
-    message: errors
+    errors = errorsArr
   }
 
   res.status(statusCode).json({
-    message,
+    message: message || errors,
     stack: GLOBAL.env === PROD_ENV ? null : err.stack,
   })
 }
