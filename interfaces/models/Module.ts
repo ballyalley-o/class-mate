@@ -1,3 +1,5 @@
+import { Schema } from 'mongoose'
+
 interface IModule {
   content: string
   pages: number
@@ -6,6 +8,7 @@ interface IModule {
   title: string
   snippets: string
   exercises: number
+  laboratories: Schema.Types.ObjectId[]
   agenda: string[]
   slug: string
 }
