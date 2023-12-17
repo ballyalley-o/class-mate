@@ -31,6 +31,12 @@ const ModuleSchema = new Schema<IModule>(
       type: Number,
       required: true,
     },
+    laboratories: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Laboratory',
+      },
+    ],
     agenda: {
       type: [String],
       required: true,
