@@ -5,7 +5,7 @@ interface IExercise {
   module: Schema.Types.ObjectId
   title: string
   page: number
-  assignment: string
+  repo: string
   cohort: Schema.Types.ObjectId
   instructions: string
   gist: string
@@ -25,11 +25,12 @@ const ExerciseSchema = new Schema<IExercise>(
     page: {
       type: Number,
     },
-    assignment: {
+    repo: {
       type: String,
     },
     cohort: {
       type: Schema.Types.ObjectId,
+      ref: 'Cohort',
       // required: true,
     },
     instructions: {
