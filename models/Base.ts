@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-// TODO: add fields for role based
+// TODO: add fields for role based schemas
 interface ITrainer {
   isChecked: boolean
 }
