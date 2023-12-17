@@ -1,5 +1,5 @@
 node_modules/
-students_iod
+students_iod.json
 .env
 .nyc_output/
 .grunt/
