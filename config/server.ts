@@ -1,11 +1,12 @@
 import dotenv from 'dotenv'
 import express, { Application } from 'express'
+import cors from 'cors'
 // @routes
 import serverRoute from '@routes/server'
 import mainRoute from '@routes'
 // @middleware
 import cookieParser from 'cookie-parser'
-import { logger, errorHandler, notFound } from '@middleware'
+import { logger, errorHandler, notFound, setHeaders } from '@middleware'
 // @db
 import { connectDb } from '@config'
 // @globals
@@ -26,6 +27,8 @@ class App {
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
     this.app.use(cookieParser())
+    this.app.use(setHeaders)
+    this.app.use(cors())
     this.registerRoutes()
     this.app.use(errorHandler)
     this.app.use(notFound)
