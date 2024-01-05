@@ -5,9 +5,11 @@ interface IExercise {
   title: string
   page: number
   assignment: string
+  repo: string
   cohort: Schema.Types.ObjectId
   instructions: string
   gist: string
+  status: string
 }
 
 export default IExercise

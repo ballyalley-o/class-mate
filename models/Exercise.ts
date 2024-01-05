@@ -1,16 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import DefaultSchema from '@models/Default'
-
-interface IExercise {
-  module: Schema.Types.ObjectId
-  title: string
-  page: number
-  repo: string
-  cohort: Schema.Types.ObjectId
-  instructions: string
-  gist: string
-  status: string
-}
+import { IExercise } from '@interfaces/models'
 
 const ExerciseSchema = new Schema<IExercise>(
   {
