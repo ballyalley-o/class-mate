@@ -2,6 +2,8 @@ import mongoose, { Schema, model, connect } from 'mongoose'
 import { IRecording } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
 
+const TAG = 'Recording'
+
 const RecordingSchema = new Schema<IRecording>(
   {
     title: {
@@ -39,7 +41,7 @@ const RecordingSchema = new Schema<IRecording>(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    collection: 'Recording',
+    collection: TAG,
     timestamps: true,
   }
 )
@@ -49,5 +51,5 @@ RecordingSchema.index({ title: 1 })
 RecordingSchema.index({ content: 1 })
 RecordingSchema.index({ topics: 1 })
 
-const Recording = mongoose.model('Recording', RecordingSchema)
+const Recording = mongoose.model(TAG, RecordingSchema)
 export default Recording
