@@ -2,6 +2,8 @@ import mongoose, { Schema } from 'mongoose'
 import DefaultSchema from '@models/Default'
 import { IExercise } from '@interfaces/models'
 
+const TAG = 'Exercise'
+
 const ExerciseSchema = new Schema<IExercise>(
   {
     module: {
@@ -36,7 +38,8 @@ const ExerciseSchema = new Schema<IExercise>(
   },
   {
     toJSON: { virtuals: true },
-    collection: 'Exercise',
+    collation: { locale: 'en', strength: 2 },
+    collection: TAG,
     timestamps: true,
   }
 )
@@ -45,5 +48,5 @@ ExerciseSchema.add(DefaultSchema)
 ExerciseSchema.index({ module: 1 })
 ExerciseSchema.index({ title: 1 })
 
-const Exercise = mongoose.model('Exercise', ExerciseSchema)
+const Exercise = mongoose.model(TAG, ExerciseSchema)
 export default Exercise
