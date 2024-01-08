@@ -8,6 +8,7 @@ const ExerciseSchema = new Schema<IExercise>(
   {
     module: {
       type: Schema.Types.ObjectId,
+      ref: 'Module',
       required: true,
     },
     title: {
