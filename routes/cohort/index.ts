@@ -1,6 +1,5 @@
 // import { studentRoute } from '@routes/cohort/students'
 import cohortRoute from '@routes/cohort/cohort'
-import { GLOBAL } from '@config'
 import { PATH } from '@routing'
 
 /**

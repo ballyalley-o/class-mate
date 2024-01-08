@@ -1,7 +1,10 @@
-import mongoose, { Schema, model, connect } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcryptjs'
+import { SNACKS } from '@constants'
 import { IUser } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
+
+const TAG = 'User'
 
 const UserSchema = new Schema<IUser>(
   {
@@ -53,7 +56,7 @@ const UserSchema = new Schema<IUser>(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    collection: 'User',
+    collection: TAG,
     timestamps: true,
   }
 )
@@ -75,6 +78,6 @@ UserSchema.methods.matchPassword = async function (enteredPassword: string) {
 UserSchema.index({ username: 1 })
 UserSchema.index({ firstname: 1 })
 
-const User = mongoose.model('User', UserSchema)
+const User = mongoose.model(TAG, UserSchema)
 
 export default User
