@@ -1,5 +1,5 @@
 import 'colors'
-import { Logger } from '@interfaces'
+import { ILogger } from '@interfaces'
 
 declare module 'colors' {
   interface String {
@@ -16,7 +16,7 @@ declare module 'colors' {
 //   errored: ['bgWhite', 'bold'],
 // })
 
-const logger: Logger = {
+const logger: ILogger = {
   // @type - custom
   custom: (color: any, ...message: string[]) =>
     console.log(message.join('')[color]),
