@@ -7,6 +7,10 @@ const TAG = 'Module'
 
 const ModuleSchema = new Schema<IModule>(
   {
+    moduleNo: {
+      type: Number,
+      required: true,
+    },
     title: {
       type: String,
       required: true,

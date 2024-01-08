@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose'
 
 interface IModule {
+  moduleNo: number
   title: string
   agenda: string
   pages: number
