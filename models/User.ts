@@ -1,7 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcryptjs'
-
-import { REGEX, SNACKS } from '@constants'
+import { SNACKS } from '@constants'
 import { IUser } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
 
@@ -26,7 +25,10 @@ const UserSchema = new Schema<IUser>(
       type: String,
       required: true,
       unique: true,
-      match: [REGEX.email, SNACKS.inValidEmail],
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        'Please add a valid email',
+      ],
     },
     password: {
       type: String,
