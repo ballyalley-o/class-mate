@@ -23,9 +23,6 @@ const ModuleSchema = new Schema<IModule>(
       type: String,
       //   required: true
     },
-    link: {
-      type: String,
-    },
     snippets: {
       type: String,
     },
@@ -55,7 +52,7 @@ ModuleSchema.pre('save', function (next) {
 ModuleSchema.add(DefaultSchema)
 
 ModuleSchema.index({ title: 1 })
-ModuleSchema.index({ content: 1 })
+ModuleSchema.index({ agenda: 1 })
 ModuleSchema.index({ slug: 1 })
 
 const Module = mongoose.model('Module', ModuleSchema)

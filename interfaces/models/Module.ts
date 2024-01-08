@@ -5,7 +5,6 @@ interface IModule {
   agenda: string
   pages: number
   file: string
-  link: string
   snippets: string
   exercises: Schema.Types.ObjectId[]
   slug: string

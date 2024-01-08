@@ -80,13 +80,11 @@ const updateModule = asyncHandler(async (req, res, next) => {
 
   if (module) {
     module.title = req.body.title || module.title
-    module.content = req.body.content || module.content
+    module.agenda = req.body.agenda || module.agenda
     module.pages = req.body.pages || module.pages
     module.file = req.body.file || module.file
-    module.link = req.body.link || module.link
-    module.snippets = req.body.snippets || module.snippets
     module.exercises = req.body.exercises || module.exercises
-    module.agenda = req.body.agenda || module.agenda
+    module.snippets = req.body.snippets || module.snippets
 
     const updatedModule = await module.save()
     // module = await Module.findByIdAndUpdate(req.params.id, req.body || module, {
