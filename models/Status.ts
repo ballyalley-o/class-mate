@@ -6,7 +6,7 @@ const TAG = 'Status'
 
 const StatusSchema = new Schema<IStatus>(
   {
-    status: {
+    type: {
       type: String,
       required: true,
     },
