@@ -64,5 +64,5 @@ ModuleSchema.index({ title: 1 })
 ModuleSchema.index({ agenda: 1 })
 ModuleSchema.index({ slug: 1 })
 
-const Module = mongoose.model('Module', ModuleSchema)
+const Module = mongoose.model(TAG, ModuleSchema)
 export default Module

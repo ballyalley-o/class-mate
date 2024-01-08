@@ -8,10 +8,12 @@ const ProgressSchema = new Schema<IProgress>(
   {
     exercise: {
       type: Schema.Types.ObjectId,
+      ref: 'Exercise',
       required: true,
     },
     status: {
       type: Schema.Types.ObjectId,
+      ref: 'Status',
       required: true,
     },
   },
