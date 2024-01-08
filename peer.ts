@@ -2,9 +2,9 @@ import 'colors'
 import dotenv from 'dotenv'
 import App from '@config/server'
 // @datas
-import { users, roles, cohort } from '@migration'
+import { users, roles, cohort, module } from '@migration'
 // @models
-import { User, Role, Cohort } from '@models'
+import { User, Role, Cohort, Module } from '@models'
 import { logger } from '@middleware'
 dotenv.config()
 
@@ -20,6 +20,7 @@ const peerData = async () => {
     const createdRoles = await Role.insertMany(roles)
     const createdUsers = await User.insertMany(users)
     const createdCohort = await Cohort.insertMany(cohort)
+    const createdModule = await Module.insertMany(module)
 
     logger.warn(' DATA MIGRATED 🌱 ')
     process.exit()
