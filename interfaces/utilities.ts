@@ -1,3 +1,3 @@
-export interface Params {
+export interface IParams {
   (...params: any[]): void
 }

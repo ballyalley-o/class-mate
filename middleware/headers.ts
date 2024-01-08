@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import { expressController } from '@interfaces/middleware'
+import { IExpressController } from '@interfaces/middleware'
 
-const setHeaders = ({ req, res, next }: expressController) => {
+const setHeaders = ({ req, res, next }: IExpressController) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE')
   res.setHeader(

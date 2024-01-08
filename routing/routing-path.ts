@@ -1,8 +1,8 @@
 import GLOBAL from '@config/global'
 import PARAM from '@routing/param'
-import { Params } from '@interfaces/utilities'
+import { IParams } from '@interfaces/utilities'
 
-const redir: Params = (...params) => {
+const redir: IParams = (...params) => {
   return params.join('')
 }
 
