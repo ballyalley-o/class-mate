@@ -1,5 +1,5 @@
 interface IStatus {
-  status: string
+  type: string
   description: string
 }
 
