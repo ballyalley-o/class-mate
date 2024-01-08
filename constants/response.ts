@@ -15,24 +15,28 @@ const RESPONSE = {
   },
   success: {
     200: 'OK: Successful Request',
-    201: (user: any) => ` ${user} is Created`,
-    updated: (user: any) => `Successful Request: ${user} was UPDATED`,
-    deleted: (user: any) => `Successful Request: ${user} was DELETED`,
-    signIn: (user: any) => `${user} Signed In`,
-    signOut: (user: any) => `${user} Signed Out`,
+    201: (data: any) => ` ${data} is Created`,
+    updated: (data: any) => `Successful Request: ${data} was UPDATED`,
+    deleted: (data: any) => `Successful Request: ${data} was DELETED`,
+    signIn: (data: any) => `${data} Signed In`,
+    signOut: (data: any) => `${data} Signed Out`,
   },
   error: {
     500: 'Internal Server Error: An unexpected server error occurred',
     404: 'Not Found: The requested resource could not be found',
     403: 'Forbidden: Access to the requested resource is forbidden',
     401: 'Unauthorized: Authentication is required or credentials are invalid',
-    400: (user: any) => `400: ${user} already exists`,
+    400: (data: any) => `400: ${data} already exists`,
     invalid: 'Bad Request: The request is malformed or invalid',
-    notFound: (user: any) => `${user} is not found`,
+    notFound: (data: any) => `${data} is not found`,
     invalidRole: async (role: any) =>
-      `Only users enrolled as ${role} can be added to the ${role}s list.`,
+      `Only datas enrolled as ${role} can be added to the ${role}s list.`,
     studentWithCohort: (cohort: any) =>
       `The student already belongs to a cohort. ${cohort}`,
+    failedCreate: (data: any) => `Failed to create ${data}`,
+    failedFetch: (data: any) => `Failed to fetch the ${data}`,
+    failedUpdate: (data: any) => `Failed to update the ${data}`,
+    failedDelete: (data: any) => `Failed to delete the ${data}`,
   },
 }
 
