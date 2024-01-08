@@ -79,7 +79,9 @@ const updateModule = asyncHandler(async (req, res, next) => {
   let module = await Module.findById(req.params.id)
 
   if (module) {
+    module.moduleNo = req.body.moduleNo || module.moduleNo
     module.title = req.body.title || module.title
+    module.content = req.body.content || module.content
     module.agenda = req.body.agenda || module.agenda
     module.pages = req.body.pages || module.pages
     module.file = req.body.file || module.file
