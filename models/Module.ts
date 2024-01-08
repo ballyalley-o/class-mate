@@ -3,13 +3,15 @@ import { IModule } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
 import slugify from 'slugify'
 
+const TAG = 'Module'
+
 const ModuleSchema = new Schema<IModule>(
   {
     title: {
       type: String,
       required: true,
     },
-    content: {
+    agenda: {
       type: String,
       required: true,
     },
@@ -27,20 +29,12 @@ const ModuleSchema = new Schema<IModule>(
     snippets: {
       type: String,
     },
-    exercises: {
-      type: Number,
-      required: true,
-    },
-    laboratories: [
+    exercises: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Laboratory',
       },
     ],
-    agenda: {
-      type: [String],
-      required: true,
-    },
     slug: {
       type: String,
     },
@@ -48,13 +42,13 @@ const ModuleSchema = new Schema<IModule>(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    collection: 'Module',
+    collection: TAG,
     timestamps: true,
   }
 )
 
 ModuleSchema.pre('save', function (next) {
-  this.slug = slugify(this.content, { lower: true })
+  this.slug = slugify(this.agenda, { lower: true })
   next()
 })
 

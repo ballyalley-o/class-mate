@@ -1,15 +1,13 @@
 import { Schema } from 'mongoose'
 
 interface IModule {
-  content: string
+  title: string
+  agenda: string
   pages: number
   file: string
   link: string
-  title: string
   snippets: string
-  exercises: number
-  laboratories: Schema.Types.ObjectId[]
-  agenda: string[]
+  exercises: Schema.Types.ObjectId[]
   slug: string
 }
 
