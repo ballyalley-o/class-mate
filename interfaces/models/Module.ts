@@ -3,7 +3,8 @@ import { Schema } from 'mongoose'
 interface IModule {
   moduleNo: number
   title: string
-  agenda: string
+  content: string
+  agenda: string[]
   pages: number
   file: string
   snippets: string

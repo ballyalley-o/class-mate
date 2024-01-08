@@ -15,10 +15,15 @@ const ModuleSchema = new Schema<IModule>(
       type: String,
       required: true,
     },
-    agenda: {
+    content: {
       type: String,
-      required: true,
     },
+    agenda: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     pages: {
       type: Number,
       required: true,
@@ -49,7 +54,7 @@ const ModuleSchema = new Schema<IModule>(
 )
 
 ModuleSchema.pre('save', function (next) {
-  this.slug = slugify(this.agenda, { lower: true })
+  this.slug = slugify(this.content, { lower: true })
   next()
 })
 
