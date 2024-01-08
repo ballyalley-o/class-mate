@@ -35,3 +35,4 @@ dist/
 .yarn/
 .webpack/
 .svelte-kit
+modules/

@@ -3,16 +3,27 @@ import { IModule } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
 import slugify from 'slugify'
 
+const TAG = 'Module'
+
 const ModuleSchema = new Schema<IModule>(
   {
+    moduleNo: {
+      type: Number,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
     },
     content: {
       type: String,
-      required: true,
     },
+    agenda: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     pages: {
       type: Number,
       required: true,
@@ -21,26 +32,15 @@ const ModuleSchema = new Schema<IModule>(
       type: String,
       //   required: true
     },
-    link: {
-      type: String,
-    },
     snippets: {
       type: String,
     },
-    exercises: {
-      type: Number,
-      required: true,
-    },
-    laboratories: [
+    exercises: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Laboratory',
+        ref: 'Exercise',
       },
     ],
-    agenda: {
-      type: [String],
-      required: true,
-    },
     slug: {
       type: String,
     },
@@ -48,7 +48,7 @@ const ModuleSchema = new Schema<IModule>(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    collection: 'Module',
+    collection: TAG,
     timestamps: true,
   }
 )
@@ -61,8 +61,8 @@ ModuleSchema.pre('save', function (next) {
 ModuleSchema.add(DefaultSchema)
 
 ModuleSchema.index({ title: 1 })
-ModuleSchema.index({ content: 1 })
+ModuleSchema.index({ agenda: 1 })
 ModuleSchema.index({ slug: 1 })
 
-const Module = mongoose.model('Module', ModuleSchema)
+const Module = mongoose.model(TAG, ModuleSchema)
 export default Module

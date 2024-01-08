@@ -8,6 +8,7 @@ const ExerciseSchema = new Schema<IExercise>(
   {
     module: {
       type: Schema.Types.ObjectId,
+      ref: 'Module',
       required: true,
     },
     title: {
@@ -15,24 +16,15 @@ const ExerciseSchema = new Schema<IExercise>(
       required: true,
     },
     page: {
-      type: Number,
+      type: String,
     },
     repo: {
       type: String,
     },
-    cohort: {
-      type: Schema.Types.ObjectId,
-      ref: 'Cohort',
-      // required: true,
-    },
     instructions: {
       type: String,
-      required: true,
     },
     gist: {
-      type: String,
-    },
-    status: {
       type: String,
     },
   },
