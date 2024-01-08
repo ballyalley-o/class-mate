@@ -107,7 +107,7 @@ const deleteStatus = asyncHandler(async (req, res, next) => {
 
       res.status(200).json({
         message: RESPONSE.success.deleted(status.type),
-        student: {},
+        status: {},
       })
     } catch (error: any) {
       logger.error(error.message)

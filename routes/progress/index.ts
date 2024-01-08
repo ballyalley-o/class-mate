@@ -8,7 +8,7 @@ import { PATH } from '@routing'
 // const base = `${PARAM.cohort.def}`
 const linkProgressRoutes = (app: any) => {
   app.use(PATH.progress, progressRoute)
-  app.use(PATH.progress, statusRoute)
+  app.use(PATH.status, statusRoute)
 }
 
 export default linkProgressRoutes

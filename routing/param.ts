@@ -40,6 +40,10 @@ const PARAM = {
     def: '/progress',
     progress: '/progress/:id',
   },
+  status: {
+    def: '/status',
+    statusId: '/status/:id',
+  },
   // @production
   buildLoc: 'client/dist',
   buildView: path.resolve(__dirname, 'client', 'dist', 'index.html'),
