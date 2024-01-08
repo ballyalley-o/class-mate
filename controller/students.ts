@@ -106,7 +106,7 @@ const deleteStudent = asyncHandler(async (req, res, next) => {
       const studentRole = await User.find({ role: role._id })
       if (!studentRole) {
         res.status(400)
-        throw new Error(RESPONSE.error[400](student.firstname))
+        throw new Error(RESPONSE.error[404])
       }
       await student.deleteOne({ _id: student._id })
       res.status(200).json({
