@@ -1,8 +1,25 @@
-const modules = [
+const module = [
   {
-    moduleNo: 1,
-    title: 'Basics of Software Engineering',
-    agenda: 'Basics of Software Engineering',
+    moduleNo: 4,
+    title: 'FrontEnd Development',
+    content: 'More on Front-End Development:',
+    agenda: [
+      'Design',
+      'Brief introduction to React',
+      'Style Guides',
+      'Intro to Paper Prototyping',
+      'FIGMA',
+      'Custom Elements',
+      'Short intro to MVC',
+      'Concept to Design',
+      'Bootstrap CSS',
+      'Manage Data',
+      'REST APIs',
+      'Enhance the Application',
+      'Icon Libraries',
+      'Moment.js',
+      'Charts libraries',
+    ],
     pages: 89,
     file: 'module/12312312512rf13f121.pdf',
     snippets:
@@ -11,3 +28,5 @@ const modules = [
     exercises: [],
   },
 ]
+
+export default module
