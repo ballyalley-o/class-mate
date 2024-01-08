@@ -32,7 +32,7 @@ const ModuleSchema = new Schema<IModule>(
     exercises: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Laboratory',
+        ref: 'Exercise',
       },
     ],
     slug: {
