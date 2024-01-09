@@ -7,6 +7,7 @@ interface IExercise {
   repo: string
   instructions: string
   gist: string
+  answers: string
 }
 
 export default IExercise
