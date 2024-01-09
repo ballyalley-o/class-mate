@@ -1,4 +1,4 @@
-interface Logger {
+interface ILogger {
   /**
    * Custom log
    * @param message
@@ -57,4 +57,4 @@ interface Logger {
   db(host: any, dbName: any, isConnected: boolean): void
 }
 
-export default Logger
+export default ILogger

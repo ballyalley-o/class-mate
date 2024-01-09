@@ -38,7 +38,12 @@ const PARAM = {
   // progress
   progress: {
     def: '/progress',
-    progress: '/progress/:id',
+    progressId: '/progress/:id',
+  },
+  // exercise
+  exercise: {
+    def: '/exercise',
+    exerciseId: '/exercise/:id',
   },
   status: {
     def: '/status',

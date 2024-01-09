@@ -27,6 +27,9 @@ const ExerciseSchema = new Schema<IExercise>(
     gist: {
       type: String,
     },
+    answers: {
+      type: String,
+    },
   },
   {
     toJSON: { virtuals: true },
