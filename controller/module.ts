@@ -9,7 +9,9 @@ const TAG = 'Module'
 // @access Private
 const getModules = asyncHandler(async (req, res, next) => {
   try {
-    const modules = await Module.find({})
+    const modules = await Module.find({}).populate([
+      { path: 'exercises', select: 'title' },
+    ])
     if (modules) {
       res.status(200).json({
         message: RESPONSE.success[200],
