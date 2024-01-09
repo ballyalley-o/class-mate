@@ -17,9 +17,9 @@ const UserSchema = new Schema<IUser>(
     },
     role: {
       type: Schema.Types.ObjectId,
-      // required: true,
+      required: true,
       ref: 'Role',
-      // default: 'Student',
+      default: 'Student',
     },
     email: {
       type: String,
@@ -50,7 +50,6 @@ const UserSchema = new Schema<IUser>(
     cohort: {
       type: Schema.Types.ObjectId,
       ref: 'Cohort',
-      // required: true,
     },
   },
   {
@@ -74,6 +73,27 @@ UserSchema.pre('save', async function (next) {
 UserSchema.methods.matchPassword = async function (enteredPassword: string) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
+
+UserSchema.pre('save', async function (next) {
+  try {
+    const cohort = await mongoose.model('Cohort').findById(this.cohort)
+    // const studentRole = await mongoose.model('Role').find({ type: 'Student' })
+    const studentRole = await mongoose
+      .model('Role')
+      .findOne({ type: 'Student' })
+    if (cohort && studentRole) {
+      if (this.role && this.role.toString() === studentRole._id.toString()) {
+        cohort.students.push(this._id)
+      } else {
+        cohort.trainers.push(this._id)
+      }
+      await cohort.save()
+    }
+    next()
+  } catch (error: any) {
+    next(error)
+  }
+})
 
 UserSchema.index({ username: 1 })
 UserSchema.index({ firstname: 1 })
