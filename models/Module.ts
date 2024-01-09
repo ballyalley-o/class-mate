@@ -30,7 +30,6 @@ const ModuleSchema = new Schema<IModule>(
     },
     file: {
       type: String,
-      //   required: true
     },
     snippets: {
       type: String,
