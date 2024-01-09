@@ -1,6 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcryptjs'
-import { SNACKS } from '@constants'
 import { IUser } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
 
