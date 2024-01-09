@@ -43,5 +43,18 @@ ExerciseSchema.add(DefaultSchema)
 ExerciseSchema.index({ module: 1 })
 ExerciseSchema.index({ title: 1 })
 
+ExerciseSchema.pre('save', async function (next) {
+  try {
+    const module = await mongoose.model('Module').findById(this.module)
+    if (module) {
+      module.exercises.push(this._id)
+      await module.save()
+    }
+    next()
+  } catch (error: any) {
+    next(error)
+  }
+})
+
 const Exercise = mongoose.model(TAG, ExerciseSchema)
 export default Exercise
