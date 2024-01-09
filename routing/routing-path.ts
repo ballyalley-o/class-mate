@@ -15,6 +15,7 @@ const PATH = {
   trainer: redir(GLOBAL.apiRoot, PARAM.trainer.def),
   module: redir(GLOBAL.apiRoot, PARAM.module.def),
   progress: redir(GLOBAL.apiRoot, PARAM.progress.def),
+  exercise: redir(GLOBAL.apiRoot, PARAM.exercise.def),
   status: redir(GLOBAL.apiRoot, PARAM.progress.def, PARAM.status.def),
 }
 
