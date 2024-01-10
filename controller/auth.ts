@@ -74,6 +74,7 @@ const signUp = asyncHandler(async (req, res, next) => {
     role,
     location,
     avatar,
+    cohort,
   } = req.body
 
   const userExists = await User.findOne({ email, username })
@@ -92,6 +93,7 @@ const signUp = asyncHandler(async (req, res, next) => {
     role,
     location,
     avatar,
+    cohort,
   }
 
   const user = await User.create(userBody)

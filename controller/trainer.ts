@@ -70,6 +70,7 @@ const updateTrainer = asyncHandler(async (req, res, next) => {
     trainer.location = req.body.location || trainer.location
     trainer.role = req.body.role || trainer.role
     trainer.avatar = req.body.avatar || trainer.avatar
+    trainer.cohort = req.body.cohort || trainer.cohort
 
     if (req.body.password) {
       trainer.password = req.body.password

@@ -1,6 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcryptjs'
-import { SNACKS } from '@constants'
 import { IUser } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
 
@@ -81,6 +80,7 @@ UserSchema.pre('save', async function (next) {
     const studentRole = await mongoose
       .model('Role')
       .findOne({ type: 'Student' })
+
     if (cohort && studentRole) {
       if (this.role && this.role.toString() === studentRole._id.toString()) {
         cohort.students.push(this._id)
