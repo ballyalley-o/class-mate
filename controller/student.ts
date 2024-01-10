@@ -76,6 +76,7 @@ const updateStudent = asyncHandler(async (req, res, next) => {
     student.location = req.body.location || student.location
     student.role = req.body.role || student.role
     student.avatar = req.body.avatar || student.avatar
+    student.cohort = req.body.cohort || student.cohort
 
     if (req.body.password) {
       student.password = req.body.password
