@@ -8,6 +8,7 @@ interface IExercise {
   instructions: string
   gist: string
   answers: string
+  status: Schema.Types.ObjectId // only show when added to module exercises schema
 }
 
 export default IExercise

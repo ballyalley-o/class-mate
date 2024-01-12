@@ -10,6 +10,7 @@ interface IUser {
   username: string
   avatar: string
   cohort: Schema.Types.ObjectId
+  progress: Schema.Types.ObjectId
   matchPassword(enteredPassword: string): Promise<boolean>
 }
 

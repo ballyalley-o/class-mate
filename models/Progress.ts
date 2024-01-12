@@ -1,8 +1,11 @@
 import mongoose, { Schema, model } from 'mongoose'
 import { IProgress } from '@interfaces/models'
 import DefaultSchema from '@models/Default'
+import Status from '@models/Status'
 
 const TAG = 'Progress'
+
+let unacceptedStatusId
 
 const ProgressSchema = new Schema<IProgress>(
   {
@@ -15,6 +18,7 @@ const ProgressSchema = new Schema<IProgress>(
       type: Schema.Types.ObjectId,
       ref: 'Status',
       required: true,
+      default: unacceptedStatusId,
     },
   },
   {
@@ -24,6 +28,15 @@ const ProgressSchema = new Schema<IProgress>(
     timestamps: true,
   }
 )
+
+async function getUnacceptedStatusId() {
+  const unacceptedStatus = await Status.findOne({ type: 'unaccepted' })
+  if (unacceptedStatus) {
+    unacceptedStatusId = unacceptedStatus._id
+  }
+}
+
+getUnacceptedStatusId()
 
 ProgressSchema.add(DefaultSchema)
 ProgressSchema.index({ exercise: 1 })
