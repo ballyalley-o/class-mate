@@ -1,0 +1,157 @@
+{
+    "johndoe": {
+        "_id": "659d4f8db79ffe3e8c8b902e",
+        "firstname": "Test",
+        "lastname": "Test",
+        "role": {
+            "_id": "5c3b08ae6d663a3c4e8f3566",
+            "type": "Student"
+        },
+        "email": "test_7@test.com",
+        "password": "$2a$10$W6F13u26NfjFynThg76/J.DrF2lzTfb0PCjDRaFoyvSpir3zzQEwm",
+        "username": "testtest7",
+        "location": "Auckland City, NZ",
+        "avatar": "",
+        "cohort": {
+            "_id": "5c3b08cf6d663a3c4e8f3568",
+            "name": "2023-10-12-se-ff-us-red"
+        },
+        "isActive": true,
+        "isArchived": false,
+        "createdAt": "2024-01-09T13:52:13.739Z",
+        "updatedAt": "2024-01-10T10:41:55.580Z",
+        "__v": 0,
+        "progress": {
+            "moduleExercises": [
+                {
+                    "_id": "659d29ba1ad8a0d3fe6693c9",
+                    "moduleNo": 4,
+                    "title": "More in FrontEnd Development",
+                    "exercises": [
+                        {
+                            "exercise": {
+                                "_id": "659d29ba1ad8a0d3fe6693c9",
+                                "module": "659c082d56a610131a5fa519",
+                                "title": "Figma",
+                                "page": "28",
+                                "repo": "https://classroom.github.com/a/bxKVTDBg",
+                                "status": {
+                                    "type": "failed",
+                                    "_id": "659d29ba1ad8a0d3fe6693c9"
+                                }
+                            }
+                        },
+                        {
+                            "exercise": {
+                                "_id": "659d29ba1ad8a0d3fe6693c9",
+                                "module": "659c082d56a610131a5fa519",
+                                "title": "Figma",
+                                "page": "28",
+                                "repo": "https://classroom.github.com/a/bxKVTDBg"
+                            },
+                            "status": {
+                                "type": "completed",
+                                "_id": "659d29ba1ad8a0d3fe6693c9"
+                            }
+                        },
+                        {
+                            "exercise": {
+                                "_id": "659d29ba1ad8a0d3fe6693c9",
+                                "module": "659c082d56a610131a5fa519",
+                                "title": "Figma",
+                                "page": "28",
+                                "repo": "https://classroom.github.com/a/bxKVTDBg"
+                            },
+                            "status": {
+                                "type": "submitted",
+                                "_id": "659d29ba1ad8a0d3fe6693c9"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "_id": "659d29ba1ad8a0d3fe6693c9",
+                    "moduleNo": 5,
+                    "title": "More in FrontEnd Development",
+                    "exercises": [
+                        {
+                            "exercise": {
+                                "_id": "659d29ba1ad8a0d3fe6693c9",
+                                "module": "659c082d56a610131a5fa519",
+                                "title": "Figma",
+                                "page": "28",
+                                "repo": "https://classroom.github.com/a/bxKVTDBg"
+                            },
+                            "status": {
+                                "type": "failed",
+                                "_id": "659d29ba1ad8a0d3fe6693c9"
+                            }
+                        },
+                        {
+                            "exercise": {
+                                "_id": "659d29ba1ad8a0d3fe6693c9",
+                                "module": "659c082d56a610131a5fa519",
+                                "title": "Figma",
+                                "page": "28",
+                                "repo": "https://classroom.github.com/a/bxKVTDBg"
+                            },
+                            "status": {
+                                "type": "completed",
+                                "_id": "659d29ba1ad8a0d3fe6693c9"
+                            }
+                        },
+                        {
+                            "exercise": {
+                                "_id": "659d29ba1ad8a0d3fe6693c9",
+                                "module": "659c082d56a610131a5fa519",
+                                "title": "Figma",
+                                "page": "28",
+                                "repo": "https://classroom.github.com/a/bxKVTDBg"
+                            },
+                            "status": {
+                                "type": "submitted",
+                                "_id": "659d29ba1ad8a0d3fe6693c9"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "miniProjects": [
+                {
+                    "miniProjectNo": 1,
+                    "title": "about API",
+                    "description": "",
+                    "repo": "",
+                    "status": "presented",
+                    "_id": "5c3b08ae6d663a3c4e8f3566"
+                },
+                {
+                    "miniProjectNo": 2,
+                    "title": "about API",
+                    "description": "",
+                    "repo": "",
+                    "status": "presented",
+                    "_id": "5c3b08ae6d663a3c4e8f3566"
+                },
+                {
+                    "miniProjectNo": 3,
+                    "title": "about API",
+                    "description": "",
+                    "repo": "",
+                    "status": "presented",
+                    "_id": "5c3b08ae6d663a3c4e8f3566"
+                }
+            ],
+            "capstone": {
+                "documentation": "",
+                "title": "",
+                "description": "something",
+                "repo": "",
+                "status": {
+                    "type": "completed",
+                    "_id": "5c3b08ae6d663a3c4e8f3566"
+                }
+            }
+        }
+    }
+}
