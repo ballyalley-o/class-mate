@@ -19,9 +19,15 @@ dotenv.config()
  * @param express.urlenconded - url encoder
  * @param cookieParser - cookie parser
  */
+/**
+ * Represents the application server.
+ */
 class App {
   private app: Application
 
+  /**
+   * Constructs a new instance of the server.
+   */
   constructor() {
     this.app = express()
     this.app.use(express.json())
@@ -39,6 +45,10 @@ class App {
     mainRoute(this.app)
   }
 
+  /**
+   * Connects to the database.
+   * @returns A promise that resolves when the database connection is established.
+   */
   public async connectDb(): Promise<void> {
     try {
       await connectDb(true)
@@ -47,6 +57,9 @@ class App {
     }
   }
 
+  /**
+   * Starts the application server.
+   */
   public start(): void {
     try {
       this.app.listen(GLOBAL.port, () =>

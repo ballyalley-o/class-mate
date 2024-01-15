@@ -11,7 +11,8 @@
     "resolve": "node --experimental-loader tsc-module-loader dist/app",
     "test": "echo \"Error: no test specified\" && exit 1",
     "peer": "node dist/peer.js -i",
-    "destroy": "node dist/peer.js -d"
+    "destroy": "node dist/peer.js -d",
+    "docs": "typedoc --out docs '*/*.ts'"
   },
   "author": "Bally Lomibao <ballygoodies@outlook.com>",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.1",
     "tsc-alias": "^1.8.8",
+    "typedoc": "^0.25.7",
     "typescript": "^5.2.2"
   }
 }
